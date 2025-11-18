@@ -1,0 +1,80 @@
+.app {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* Navigation */
+.main-nav {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand h2 {
+  margin: 0;
+  padding: 20px 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  display: block;
+  padding: 25px 25px;
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-links a:hover {
+  color: #FF4500;
+  background: #f8f9fa;
+}
+
+.nav-links a.active {
+  color: #FF4500;
+  border-bottom-color: #FF4500;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .nav-brand h2 {
+    padding: 10px 0;
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-links a {
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+}
