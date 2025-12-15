@@ -1,0 +1,101 @@
+{
+  "eslint": {
+    "enabled": true,
+    "config": {
+      "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+      ],
+      "rules": {
+        // Basic JavaScript/TypeScript rules
+        "no-console": "warn",
+        "no-debugger": "error",
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "indent": ["error", 2],
+        "comma-dangle": ["error", "always-multiline"],
+        "object-curly-spacing": ["error", "always"],
+        "array-bracket-spacing": ["error", "never"],
+        "space-in-parens": ["error", "never"],
+        
+        // Best practices
+        "eqeqeq": ["error", "always"],
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "no-extra-bind": "error",
+        "no-invalid-this": "error",
+        "no-lone-blocks": "error",
+        "no-multi-spaces": "error",
+        "no-new": "error",
+        "no-return-assign": "error",
+        "no-return-await": "error",
+        "no-self-compare": "error",
+        "no-useless-concat": "error",
+        "no-useless-return": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "yoda": "error",
+        
+        // Stylistic choices
+        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+        "camelcase": ["error", { "properties": "always" }],
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "func-call-spacing": ["error", "never"],
+        "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        "max-len": ["warn", { "code": 100, "ignoreComments": true, "ignoreStrings": true }],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+        "no-trailing-spaces": "error",
+        "space-before-blocks": "error",
+        "space-before-function-paren": ["error", "never"],
+        "spaced-comment": ["error", "always", { "exceptions": ["-", "+"] }]
+      },
+      "overrides": [
+        {
+          "files": ["**/*.ts", "**/*.tsx"],
+          "extends": [
+            "plugin:@typescript-eslint/recommended",
+            "plugin:@typescript-eslint/eslint-recommended"
+          ],
+          "rules": {
+            "@typescript-eslint/explicit-function-return-type": "off",
+            "@typescript-eslint/no-explicit-any": "warn",
+            "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+          }
+        },
+        {
+          "files": ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx"],
+          "env": {
+            "jest": true
+          },
+          "rules": {
+            "no-unused-expressions": "off"
+          }
+        }
+      ],
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+      },
+      "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module"
+      }
+    }
+  },
+  "rules": {
+    "no-debugger": "error",
+    "no-console": "warn"
+  }
+}

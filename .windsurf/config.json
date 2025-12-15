@@ -1,0 +1,6 @@
+{
+  "$schema": "https://getwindsurf.com/schema/config.v1.json",
+  "rules": {
+    "autoRebuildDocs": true
+  }
+}

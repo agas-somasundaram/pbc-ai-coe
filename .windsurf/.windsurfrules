@@ -1,0 +1,11 @@
+# Project Rules Entry Point
+
+1. Always load and respect all rules in `.windsurf/rules/`.
+2. If any rule here conflicts with global rules, the security rules take priority.
+3. Security scanning is ALWAYS active during coding, planning, or reviewing.
+4. When coding, continuously evaluate:
+   - Dependency risk
+   - Known CVEs
+   - Insecure patterns
+   - Secret exposure
+   - Attack vectors relevant to the file being edited
