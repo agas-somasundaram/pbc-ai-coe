@@ -15,24 +15,29 @@ function Navigation() {
     <nav className="main-nav">
       <div className="nav-brand">
         <h2>🏋️ FitTrack Pro</h2>
+        <span className="tagline">Your Personal Fitness Companion</span>
       </div>
       <ul className="nav-links">
         <li>
           <Link to="/" className={isActive('/')}>
-            Dashboard
+            📊 Dashboard
           </Link>
         </li>
         <li>
           <Link to="/projects" className={isActive('/projects')}>
-            Projects
+            🎯 Projects
           </Link>
         </li>
         <li>
           <Link to="/tasks" className={isActive('/tasks')}>
-            Tasks
+            ✅ Tasks
           </Link>
         </li>
       </ul>
+      <div className="nav-actions">
+        <button className="btn-secondary">Settings</button>
+        <button className="btn-primary">Upgrade</button>
+      </div>
     </nav>
   );
 }

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "Security Scanner Configuration",
+  "rulesDir": ".windsurf/rules",
+  "include": [
+    "**/*.{js,jsx,ts,tsx}"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.test.{js,jsx,ts,tsx}",
+    "**/*.spec.{js,jsx,ts,tsx}",
+    "**/coverage/**",
+    "**/.git/**"
+  ],
+  "scanOptions": {
+    "severity": ["critical", "high", "medium", "low"],
+    "categories": ["all"]
+  },
+  "reporter": {
+    "outputDir": "./security-audit",
+    "formats": ["markdown", "html", "json"]
+  },
+  "logger": {
+    "level": "info",
+    "silent": false
+  },
+  "rules": {
+    "RULE-90": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "RULE-80-SQL": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "RULE-80-XSS": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "RULE-65": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "RULE-80-CSRF": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "RULE-80-INPUT": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "RULE-80-EVAL": {
+      "enabled": true,
+      "severity": "critical"
+    },
+    "RULE-90-LOGS": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "RULE-80-RANDOM": {
+      "enabled": true,
+      "severity": "medium"
+    },
+    "RULE-97-RATE": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "RULE-97-HTTPS": {
+      "enabled": true,
+      "severity": "high"
+    },
+    "RULE-60-DEBUG": {
+      "enabled": false,
+      "severity": "low"
+    }
+  }
+}

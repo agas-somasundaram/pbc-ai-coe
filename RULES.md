@@ -79,6 +79,20 @@ Special rules for test files (`*.test.js`, `*.test.ts`, etc.):
 - Enables Jest environment
 - Disables `no-unused-expressions` for test assertions
 
+## Authentication Requirements
+
+| Rule | Description | Severity |
+|------|-------------|----------|
+| `require-auth` | All applications handling user data must implement authentication | Error |
+| `secure-session` | Must implement secure session management | Error |
+| `password-policy` | Must enforce strong password policies | Error |
+| `account-lockout` | Must implement account lockout after failed attempts | Error |
+| `csrf-protection` | Must include CSRF protection | Error |
+| `https-only` | Must use HTTPS for all authentication | Error |
+| `rbac` | Must implement role-based access control | Error |
+| `auth-logging` | Must log authentication attempts (without sensitive data) | Warning |
+| `mfa` | Must support multi-factor authentication for sensitive operations | Warning |
+
 ## Environment Settings
 
 - **Environments**:

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Security Audit Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .finding { margin-bottom: 20px; padding: 15px; border-left: 4px solid #dc3545; background: #f8f9fa; }
+    .finding.resolved { border-color: #28a745; opacity: 0.7; }
+    .timestamp { color: #6c757d; font-size: 0.9em; }
+    .severity { font-weight: bold; padding: 2px 6px; border-radius: 3px; }
+    .critical { color: #721c24; background: #f8d7da; }
+    .high { color: #856404; background: #fff3cd; }
+    .medium { color: #004085; background: #cce5ff; }
+    .low { color: #155724; background: #d4edda; }
+    pre { background: #f1f1f1; padding: 10px; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Security Audit Report</h1>
+  <p class="timestamp">Last updated: 12/15/2025, 10:54:14 AM</p>
+  <div id="content">
+    <h1>Security Audit Report</h1></p><p>> Generated: 2025-12-15T18:28:00.104Z</p><p><h2>Scan History</h2></p><p><h2>Scan - 12/15/2025, 10:28:00 AM</h2></p><p>Found 1 potential security issues:</p><p><h3>1. Missing Authentication</h3>
+<ul><li><strong>Severity</strong>: 🔴 High</li></ul>
+<ul><li><strong>Location</strong>: /Users/agas/code/pbc-ai-coe/fitness-tracker/src/App.tsx</li></ul>
+<ul><li><strong>Lines</strong>: 46, 47, 48</li></ul>
+<ul><li><strong>Description</strong>: Route without authentication check. Consider adding authentication.</li></ul>
+<ul><li><strong>Status</strong>: 🆕 New</p><p>``<code></li></ul>
+Line 46: <Route path="/" element={<Dashboard />} />
+Line 47: <Route path="/projects" element={<Projects />} />
+Line 48: <Route path="/tasks" element={<Tasks />} />
+</code>`<code></p><p><h2>Scan - 12/15/2025, 10:31:14 AM</h2></p><p>Found 1 potential security issues:</p><p><h3>1. Missing Authentication</h3>
+<ul><li><strong>Severity</strong>: 🔴 Critical</li></ul>
+<ul><li><strong>Rule ID</strong>: RULE-65</li></ul>
+<ul><li><strong>Rule Name</strong>: Authentication-Requirements</li></ul>
+<ul><li><strong>CIA Impact</strong>: Confidentiality, Integrity, Availability</li></ul>
+<ul><li><strong>Location</strong>: /Users/agas/code/pbc-ai-coe/fitness-tracker/src/App.tsx</li></ul>
+<ul><li><strong>Lines</strong>: 46, 47, 48</li></ul>
+<ul><li><strong>Description</strong>: Route without authentication check. All routes handling user data must implement authentication.</li></ul>
+<ul><li><strong>Recommendation</strong>: Implement authentication using Auth0, Firebase Auth, or Passport.js. Wrap routes with authentication middleware.</li></ul>
+<ul><li><strong>Status</strong>: 🆕 New</p><p><strong>Code Evidence:</strong></li></ul>
+</code>`<code>
+Line 46: <Route path="/" element={<Dashboard />} />
+Line 47: <Route path="/projects" element={<Projects />} />
+Line 48: <Route path="/tasks" element={<Tasks />} />
+</code>`<code></p><p><h2>Scan - 12/15/2025, 10:32:14 AM</h2></p><p>Found 1 potential security issues:</p><p><h3>1. Missing Authentication</h3>
+<ul><li><strong>Severity</strong>: 🔴 Critical</li></ul>
+<ul><li><strong>Rule ID</strong>: RULE-65</li></ul>
+<ul><li><strong>Rule Name</strong>: Authentication-Requirements</li></ul>
+<ul><li><strong>CIA Impact</strong>: Confidentiality, Integrity, Availability</li></ul>
+<ul><li><strong>Location</strong>: /Users/agas/code/pbc-ai-coe/fitness-tracker/src/App.tsx</li></ul>
+<ul><li><strong>Lines</strong>: 46, 47, 48</li></ul>
+<ul><li><strong>Description</strong>: Route without authentication check. All routes handling user data must implement authentication.</li></ul>
+<ul><li><strong>Recommendation</strong>: Implement authentication using Auth0, Firebase Auth, or Passport.js. Wrap routes with authentication middleware.</li></ul>
+<ul><li><strong>Status</strong>: 🆕 New</p><p><strong>Code Evidence:</strong></li></ul>
+</code>`<code>
+Line 46: <Route path="/" element={<Dashboard />} />
+Line 47: <Route path="/projects" element={<Projects />} />
+Line 48: <Route path="/tasks" element={<Tasks />} />
+</code>`<code></p><p><h2>Scan - 12/15/2025, 10:54:14 AM</h2></p><p>Found 1 potential security issues:</p><p><h3>1. Missing Authentication</h3>
+<ul><li><strong>Severity</strong>: 🔴 Critical</li></ul>
+<ul><li><strong>Rule ID</strong>: RULE-65</li></ul>
+<ul><li><strong>Rule Name</strong>: Authentication-Requirements</li></ul>
+<ul><li><strong>CIA Impact</strong>: Confidentiality, Integrity, Availability</li></ul>
+<ul><li><strong>Location</strong>: /Users/agas/code/pbc-ai-coe/fitness-tracker/src/App.tsx</li></ul>
+<ul><li><strong>Lines</strong>: 51, 52, 53</li></ul>
+<ul><li><strong>Description</strong>: Route without authentication check. All routes handling user data must implement authentication.</li></ul>
+<ul><li><strong>Recommendation</strong>: Implement authentication using Auth0, Firebase Auth, or Passport.js. Wrap routes with authentication middleware.</li></ul>
+<ul><li><strong>Status</strong>: 🆕 New</p><p><strong>Code Evidence:</strong></li></ul>
+</code>`<code>
+Line 51: <Route path="/" element={<Dashboard />} />
+Line 52: <Route path="/projects" element={<Projects />} />
+Line 53: <Route path="/tasks" element={<Tasks />} />
+</code>``</p><p>
+  </div>
+</body>
+</html>

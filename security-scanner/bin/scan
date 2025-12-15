@@ -1,0 +1,113 @@
+#!/usr/bin/env node
+
+const { program } = require('commander');
+const { scan } = require('../src');
+const path = require('path');
+const fs = require('fs');
+const { promisify } = require('util');
+const { Logger } = require('../src/utils/logger');
+const { generateReport } = require('../src/reporters/console-reporter');
+
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
+const mkdir = promisify(fs.mkdir);
+
+program
+  .name('security-scan')
+  .description('Security scanner for codebases')
+  .option('-r, --root <path>', 'Root directory to scan', process.cwd())
+  .option('--rules-dir <path>', 'Directory containing custom rules')
+  .option('-o, --output <path>', 'Output file for JSON report')
+  .option('--html', 'Generate HTML report')
+  .option('--markdown', 'Generate Markdown report')
+  .option('--format <format>', 'Output format (json, table, pretty, minimal)', 'pretty')
+  .option('--fix', 'Attempt to automatically fix issues')
+  .option('--debug', 'Enable debug logging')
+  .option('--no-color', 'Disable colored output')
+  .option('--exit-code', 'Exit with code 1 if issues are found', false)
+  .version(require('../package.json').version);
+
+program.parse(process.argv);
+
+async function run() {
+  const options = program.opts();
+  const logger = new Logger({
+    level: options.debug ? 'debug' : 'info',
+    silent: options.format === 'json' || options.format === 'minimal'
+  });
+
+  try {
+    logger.info(`Starting security scan in ${options.root}`);
+    
+    // Load config file if exists
+    const configPath = path.join(options.root, '.securityrc.json');
+    let config = {};
+    
+    if (fs.existsSync(configPath)) {
+      try {
+        config = JSON.parse(await readFile(configPath, 'utf8'));
+        logger.debug('Loaded config from .securityrc.json');
+      } catch (error) {
+        logger.warn('Failed to load .securityrc.json:', error.message);
+      }
+    }
+
+    // Merge CLI options with config file
+    const scanOptions = {
+      rootDir: options.root,
+      rulesDir: options.rulesDir || config.rulesDir,
+      include: config.include || ['**/*.{js,jsx,ts,tsx}'],
+      exclude: ['**/node_modules/**', '**/dist/**', '**/build/**', ...(config.exclude || [])],
+      logger: { level: options.debug ? 'debug' : 'info' },
+      ...config.scanOptions
+    };
+
+    // Run the scan
+    const results = await scan(scanOptions);
+    
+    // Generate reports
+    if (options.output) {
+      await mkdir(path.dirname(options.output), { recursive: true });
+      await writeFile(options.output, JSON.stringify(results, null, 2));
+      logger.info(`Report saved to ${options.output}`);
+    }
+    
+    if (options.html) {
+      const htmlReport = await generateHtmlReport(results);
+      const htmlPath = path.join(options.root, 'security-report.html');
+      await writeFile(htmlPath, htmlReport);
+      logger.info(`HTML report saved to ${htmlPath}`);
+    }
+    
+    if (options.markdown) {
+      const mdReport = generateMarkdownReport(results);
+      const mdPath = path.join(options.root, 'SECURITY-REPORT.md');
+      await writeFile(mdPath, mdReport);
+      logger.info(`Markdown report saved to ${mdPath}`);
+    }
+
+    // Display results
+    if (options.format === 'json') {
+      console.log(JSON.stringify(results, null, 2));
+    } else {
+      generateReport(results, {
+        format: options.format,
+        color: options.color
+      });
+    }
+
+    // Exit with appropriate status code
+    if (results.findings.length > 0 && options.exitCode) {
+      process.exit(1);
+    }
+
+  } catch (error) {
+    logger.error('Scan failed:', error);
+    process.exit(1);
+  }
+}
+
+run().catch(error => {
+  console.error('Unhandled error:', error);
+  process.exit(1);
+});

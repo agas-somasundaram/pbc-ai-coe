@@ -16,11 +16,60 @@
   z-index: 100;
 }
 
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .nav-brand h2 {
   margin: 0;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   color: #2c3e50;
   font-size: 1.5rem;
+}
+
+.nav-brand .tagline {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  padding-bottom: 15px;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
 }
 
 .nav-links {

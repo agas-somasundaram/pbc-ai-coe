@@ -1,0 +1,35 @@
+{
+  "name": "@security-scanner/core",
+  "version": "1.0.0",
+  "description": "A framework for security scanning based on configurable rules",
+  "main": "src/index.js",
+  "bin": {
+    "security-scan": "./bin/scan"
+  },
+  "scripts": {
+    "scan": "node bin/scan",
+    "test": "jest"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.0.0",
+    "glob": "^8.0.3",
+    "markdown-table": "^3.0.2",
+    "marked": "^4.0.0",
+    "marked-terminal": "^5.1.1"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "security",
+    "scanner",
+    "static-analysis",
+    "code-quality"
+  ],
+  "author": "",
+  "license": "MIT"
+}
